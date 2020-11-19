@@ -351,3 +351,7 @@ MigrationBackup/
 .vscode/
 main
 rangeTree
+
+# CLion folders
+cmake-build-debug/
+.idea/
