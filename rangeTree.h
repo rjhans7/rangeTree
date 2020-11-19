@@ -3,7 +3,6 @@
 #include <algorithm>
 
 using namespace std;
-typedef pair<int, int> pii;
 
 struct Nodo {
     int x;
@@ -22,11 +21,11 @@ struct Nodo {
     }   
 };
 
-bool comparex(pii a, pii b) {
+bool comparex(pair <int, int> a, pair <int, int> b) {
     return (a.first < b.first);
 }
 
-bool comparey(pii a, pii b) {
+bool comparey(pair <int, int> a, pair <int, int> b) {
     return (a.second < b.second);
 }
 
@@ -52,7 +51,7 @@ Nodo* get_most_left(Nodo* parent) {
   	return parent;
 }
 
-Nodo* create_range_tree(vector <pii> v, int l, int h, bool axis=true) {
+Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h, bool axis=true) {
     if (l==h) {
         Nodo* padre;
         int value = axis? v[l].first: v[l].second;
@@ -76,7 +75,7 @@ Nodo* create_range_tree(vector <pii> v, int l, int h, bool axis=true) {
         return padre;
     }
     int m = (l + h)/2;
-	vector<pii> temp = v;
+	vector<pair <int, int>> temp = v;
 	if (axis) sort(v.begin()+l, v.begin()+h, comparex); //x axis
     Nodo* child_left_x = create_range_tree(v,l, m, axis);
     Nodo* child_right_x = create_range_tree(v,m+1, h, axis);
@@ -106,3 +105,5 @@ Nodo* create_range_tree(vector <pii> v, int l, int h, bool axis=true) {
     
     return parent_x;
 }
+
+
