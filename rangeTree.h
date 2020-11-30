@@ -147,3 +147,7 @@ vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int 
     }
     return vector <pair <int, int>>();
 }
+
+vector <pair <int, int>> search_by_range(Nodo* &root, pair<int, int> begin, pair<int, int> end) {
+    return search_by_range_x(root, begin.first, begin.second, end.first, end.second);
+}
