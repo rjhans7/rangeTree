@@ -53,14 +53,19 @@ int main() {
     
     //Filling the tree
     vector<pii> muestra = sample_points(SAMPLE_SIZE);
+    tStart = clock();
     Nodo* tree = create_range_tree(muestra, 0, SAMPLE_SIZE - 1);
+    tEnd = clock();
+    timeTaken = double(tEnd - tStart)/CLOCKS_PER_SEC; 
+    cout << "Build Range Tree of size: " << SAMPLE_SIZE << " Time Taken: " << timeTaken << endl;
+
 
     // Tests
 
     query_size = 10;
     vector<pair<pii, pii>> queries_10 = sample_queries(query_size);
     tStart = clock();
-    test(tree, queries_10, true);
+    test(tree, queries_10);
     tEnd = clock();
     timeTaken = double(tEnd - tStart)/CLOCKS_PER_SEC; 
     cout << "Query size: " << query_size << " Time Taken: " << timeTaken << endl;

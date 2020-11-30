@@ -111,7 +111,7 @@ Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h, bool axis=true
 vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int maxX, int maxY) {
     vector <pair <int, int>> resultado;
     auto temp = root;
-    while (temp->m_pSon[0]) {
+    while (temp && temp->m_pSon[0]) {
         if (minY < temp->x) {
             temp = temp->m_pSon[0];
         } else {
@@ -135,7 +135,7 @@ vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int 
 
 vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int maxX, int maxY) {
     auto temp = root;
-    while (temp->m_pSon[0]) {
+    while (temp && temp->m_pSon[0]) {
         if (minX < temp->x && maxX > temp->x) {
             return search_by_range_y(temp->m_pSon[1], minX, minY, maxX, maxY);
         }
