@@ -5,21 +5,21 @@
 using namespace std;
 
 struct Nodo {
-    int x;
+    int value;
     Nodo* m_pSon[3]{};
     Nodo* next;
     Nodo* prev;
     pair <int, int> point;
     bool isLeaf;
     
-    explicit Nodo(int n, pair <int, int> point, bool is_leaf = true) {
-        x = n;
+    explicit Nodo(int value, pair <int, int> point, bool isLeaf = true) {
+        this->value = value;
         m_pSon[0] = nullptr;
         m_pSon[1] = nullptr;
         m_pSon[2] = nullptr;
         next = prev = nullptr;
         this->point = point;
-        isLeaf = is_leaf;
+        this->isLeaf = isLeaf;
     }   
 };
 
@@ -94,7 +94,7 @@ Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h, bool axis=true
 		child_right_x->m_pSon[1] = child_right_y;
 	}
     
-    Nodo* parent_x = new Nodo((child_left_x->x + child_right_x->x)/2, {0,0}, false);
+    Nodo* parent_x = new Nodo((child_left_x->value + child_right_x->value) / 2, {0, 0}, false);
     parent_x->m_pSon[0] = child_left_x;
 	
 	if (axis) {
@@ -112,15 +112,15 @@ vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int 
     vector <pair <int, int>> resultado;
     auto temp = root;
     while (temp && temp->m_pSon[0]) {
-        if (minY < temp->x) {
+        if (minY < temp->value) {
             temp = temp->m_pSon[0];
         } else {
             temp = temp->m_pSon[2];
         }
     }
     while (temp) {
-        if (temp->x <= maxY) {
-            if (temp->x >= minY) {
+        if (temp->value <= maxY) {
+            if (temp->value >= minY) {
                 if (temp->point.first >= minX && temp->point.first <= maxX) {
                     resultado.emplace_back(temp->point);
                 }
@@ -136,10 +136,10 @@ vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int 
 vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int maxX, int maxY) {
     auto temp = root;
     while (temp && temp->m_pSon[0]) {
-        if (minX < temp->x && maxX > temp->x) {
+        if (minX < temp->value && maxX > temp->value) {
             return search_by_range_y(temp->m_pSon[1], minX, minY, maxX, maxY);
         }
-        else if (minX < temp->x && maxX < temp->x) {
+        else if (minX < temp->value && maxX < temp->value) {
             temp = temp->m_pSon[0];
         } else {
             temp = temp->m_pSon[2];

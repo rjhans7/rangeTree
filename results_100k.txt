@@ -1,0 +1,9 @@
+Build Range Tree of size: 100000 Time Taken: 11095.5
+Valid:1
+Query size: 10 Time Taken: 0.010194
+Valid:1
+Query size: 100 Time Taken: 0.004179
+Valid:1
+Query size: 1000 Time Taken: 0.442999
+Valid:1
+Query size: 10000 Time Taken: 4.60476
