@@ -14,10 +14,11 @@ struct Nodo {
     
     explicit Nodo(int value, pair <int, int> point, bool isLeaf = true) {
         this->value = value;
-        m_pSon[0] = nullptr;
-        m_pSon[1] = nullptr;
-        m_pSon[2] = nullptr;
-        next = prev = nullptr;
+        this->m_pSon[0] = nullptr;
+        this->m_pSon[1] = nullptr;
+        this->m_pSon[2] = nullptr;
+        this->next = nullptr;
+        this->prev = nullptr;
         this->point = point;
         this->isLeaf = isLeaf;
     }   

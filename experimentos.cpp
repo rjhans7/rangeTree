@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include "rangeTree.h"
+#include "RangeTree.h"
 #include <fstream>
 #define SAMPLE_SIZE 30
 
@@ -14,7 +14,7 @@ vector<pii> sample_points (size_t sample_size) {
     for (size_t i = 0; i < sample_size; i++) {
         int x = rand() % 1000;
         int y = rand() % 1000;
-        result.push_back({x, y});
+        result.emplace_back(x, y);
     }
     
     sort(result.begin(), result.end(), comparex);
@@ -49,7 +49,7 @@ vector<pii> brute_force_query(vector<pii> &sample, pii beg, pii end){
     return result;
 }
 
-void validate (vector<pii> &sample, vector<pii> resultado, pii beg, pii end, ofstream &outfile) {
+void validate (vector<pii> &sample, const vector<pii>& resultado, pii beg, pii end, ofstream &outfile) {
     vector<pii> bf_result = brute_force_query(sample, beg, end);
     sort(bf_result.begin(), bf_result.end(), comparex);
     if (resultado == bf_result) outfile << "Valid Result: TRUE\n";
@@ -85,9 +85,9 @@ void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, of
    
 }
 
-void test_all (Nodo* &tree, vector<pii> &sample, vector<int> queries_sizes) {
+void test_all (Nodo* &tree, vector<pii> &sample, const vector<int>& queries_sizes) {
     for (auto qs: queries_sizes) {
-        string name = "result_query_size_" + to_string(qs) +".txt";
+        string name = "../result_query_size_" + to_string(qs) + ".txt";
         ofstream outfile(name, ios::trunc);
         vector<pair<pii, pii>> queries = sample_queries(qs);
         test(tree, sample, queries, outfile);
@@ -96,7 +96,7 @@ void test_all (Nodo* &tree, vector<pii> &sample, vector<int> queries_sizes) {
 
 
 int main() {
-    srand(1);
+    srand(time(nullptr));
     clock_t tStart, tEnd;
     
     //Filling the tree

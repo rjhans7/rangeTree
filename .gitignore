@@ -355,7 +355,3 @@ rangeTree
 # CLion folders
 cmake-build-debug/
 .idea/
-result_query_size_10.txt
-result_query_size_100.txt
-result_query_size_1000.txt
-result_query_size_10000.txt

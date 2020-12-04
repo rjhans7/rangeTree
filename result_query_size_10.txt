@@ -1,0 +1,48 @@
+Query: (325,340), (861,467)
+Results:
+(337,455)
+Valid Result: TRUE
+
+Query: (332,514), (358,93)
+Results:
+Valid Result: TRUE
+
+Query: (607,462), (785,513)
+Results:
+Valid Result: TRUE
+
+Query: (307,308), (535,896)
+Results:
+(319,493)
+(337,455)
+Valid Result: TRUE
+
+Query: (222,354), (738,267)
+Results:
+Valid Result: TRUE
+
+Query: (644,63), (731,312)
+Results:
+(680,298)
+Valid Result: TRUE
+
+Query: (703,602), (716,570)
+Results:
+Valid Result: TRUE
+
+Query: (631,790), (966,276)
+Results:
+Valid Result: TRUE
+
+Query: (63,733), (208,878)
+Results:
+Valid Result: TRUE
+
+Query: (136,130), (917,331)
+Results:
+(192,194)
+(201,173)
+(608,279)
+(680,298)
+Valid Result: TRUE
+

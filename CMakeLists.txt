@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(rangeTree main.cpp rangeTree.h)
+add_executable(rangeTree experimentos.cpp RangeTree.h)
