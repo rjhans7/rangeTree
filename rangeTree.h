@@ -53,23 +53,19 @@ Nodo* get_most_left(Nodo* parent) {
   	return parent;
 }
 
-Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h, bool axis=true) {
+Nodo* create_y_range_tree(vector <pair <int, int>> v, int l, int h, bool first_time = true) {
     if (l==h) {
         Nodo* padre;
-        int value = axis ? v[l].first : v[l].second;
-        padre = new Nodo(value, {0,0}, false);
-        Nodo* child = new Nodo(value, {v[l].first,v[l].second});
+        padre = new Nodo(v[l].second, {0,0}, false);
+        Nodo* child = new Nodo(v[l].second, {v[l].first,v[l].second});
         padre->m_pSon[0] = child;
         return padre;
     }
-    if (l+1==h) {
-        Nodo* padre;
-        int value_left = axis? v[l].first: v[l].second;
-        int value_right = axis? v[h].first: v[h].second;
-        padre = new Nodo((value_left + value_right)/2, {0,0}, false);
-        Nodo* child_left =  new Nodo(value_left, {v[l].first,v[l].second});
+    else if (l+1==h) {
+        Nodo* padre = new Nodo((v[l].second + v[h].second)/2, {0,0}, false);
+        Nodo* child_left =  new Nodo(v[l].second, {v[l].first,v[l].second});
         padre->m_pSon[0] = child_left;
-        Nodo* child_right =  new Nodo(value_right, {v[h].first,v[h].second});
+        Nodo* child_right =  new Nodo(v[h].second, {v[h].first,v[h].second});
         padre->m_pSon[2] = child_right;
         child_left->next = child_right;
         child_right->prev = child_left;
@@ -77,35 +73,79 @@ Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h, bool axis=true
         return padre;
     }
     int m = (l + h)/2;
-	vector<pair <int, int>> temp = v;
-	if (axis) sort(v.begin()+l, v.begin()+h, comparex); //x axis
-    Nodo* child_left_x = create_range_tree(v,l, m, axis);
-    Nodo* child_right_x = create_range_tree(v,m+1, h, axis);
+    if (first_time) sort(v.begin()+l, v.begin()+h+1, comparey); //y axis
+    Nodo* child_left = create_y_range_tree(v,l, m, !first_time);
+    Nodo* child_right = create_y_range_tree(v,m+1, h, !first_time);
 	
-	Nodo* child_most_right = get_most_right(child_left_x);
-	Nodo* child_most_left = get_most_left(child_right_x);
+	Nodo* child_most_right = get_most_right(child_left);
+	Nodo* child_most_left = get_most_left(child_right);
+	child_most_right->next = child_most_left;
+	child_most_left->prev = child_most_right;
+    
+    Nodo* parent = new Nodo((child_left->value + child_right->value)/2, {0,0}, false);
+    parent->m_pSon[0] = child_left;
+    parent->m_pSon[2] = child_right;
+    
+    return parent;
+}
+
+Nodo* create_range_tree(vector <pair <int, int>> v, int l, int h) {
+    if (l==h) {
+        Nodo* padre_x = new Nodo(v[l].first , {0,0}, false);
+        Nodo* padre_y = new Nodo(v[l].second , {0,0}, false);
+        Nodo* child_x = new Nodo(v[l].first , {v[l].first,v[l].second});
+        Nodo* child_y = new Nodo(v[l].second , {v[l].first,v[l].second});
+        padre_x->m_pSon[0] = child_x;
+        padre_y->m_pSon[0] = child_y;
+        padre_x->m_pSon[1] = padre_y; //linking y tree
+        return padre_x;
+    }
+    if (l+1==h) {
+        Nodo* padre_x = new Nodo((v[l].first + v[h].first)/2, {0,0}, false);
+        Nodo* child_left_x =  new Nodo(v[l].first, {v[l].first,v[l].second});
+        Nodo* child_right_x =  new Nodo(v[h].first, {v[h].first,v[h].second});
+        padre_x->m_pSon[0] = child_left_x;
+        padre_x->m_pSon[2] = child_right_x;
+        child_left_x->next = child_right_x;
+        child_right_x->prev = child_left_x;
+
+        // y tree
+		sort(v.begin()+l, v.begin()+h+1, comparey); 
+        Nodo* padre_y = new Nodo((v[l].second + v[h].second)/2, {0,0}, false);
+        Nodo* child_left_y =  new Nodo(v[l].second, {v[l].first, v[l].second});
+        Nodo* child_right_y =  new Nodo(v[h].second, {v[h].first, v[h].second});
+        padre_y->m_pSon[0] = child_left_y;
+        padre_y->m_pSon[2] = child_right_y;
+        child_left_y->next = child_right_y;
+        child_right_y->prev = child_left_y;
+     
+        //Linking ytree with xtree
+        padre_x->m_pSon[1] = padre_y;
+        return padre_x;
+    }
+    int m = (l + h) / 2;
+	
+    //y tree
+    Nodo * parent_y = create_y_range_tree(v, l, h);
+ 
+    Nodo* child_left = create_range_tree(v,l, m);
+    Nodo* child_right = create_range_tree(v,m+1, h);
+	
+	Nodo* child_most_right = get_most_right(child_left);
+	Nodo* child_most_left = get_most_left(child_right);
 	child_most_right->next = child_most_left;
 	child_most_left->prev = child_most_right;
 
-	if (axis) {
-        Nodo* child_left_y = create_range_tree(v,l, m, false);
-		child_left_x->m_pSon[1] = child_left_y;
-        Nodo* child_right_y = create_range_tree(v,m+1, h, false);
-		child_right_x->m_pSon[1] = child_right_y;
-	}
+	   
+    Nodo* parent = new Nodo((child_left->value + child_right->value) / 2, {0, 0}, false);
+    parent->m_pSon[0] = child_left;
+    parent->m_pSon[2] = child_right;
     
-    Nodo* parent_x = new Nodo((child_left_x->value + child_right_x->value) / 2, {0, 0}, false);
-    parent_x->m_pSon[0] = child_left_x;
-	
-	if (axis) {
-		v = temp; //restore the input 
-		sort(v.begin()+l, v.begin()+h, comparey); //y axis
-		Nodo * parent_y = create_range_tree(v, l, h, false);
-		parent_x->m_pSon[1] = parent_y;
-	}
-    parent_x->m_pSon[2] = child_right_x;
     
-    return parent_x;
+    
+	parent->m_pSon[1] = parent_y;
+   
+    return parent;
 }
 
 vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int maxX, int maxY) {
@@ -131,6 +171,20 @@ vector <pair <int, int>> search_by_range_y(Nodo* &root, int minX, int minY, int 
         temp = temp->next;
     }
     return resultado;
+}
+
+void print_leaves(Nodo* parent){
+    cout << "Printing Leaves\n";
+    while (!parent->isLeaf) {
+        parent = parent->m_pSon[0];
+    }
+    while(parent->next){
+        cout << parent->value << ", ";
+        parent = parent->next;
+    }
+    cout << parent->value << ", ";
+    cout << endl;
+
 }
 
 vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int maxX, int maxY) {
