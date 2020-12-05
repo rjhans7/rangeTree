@@ -1,576 +1,300 @@
-Query: (382,609), (503,113)
-Results:
+Query: (706,176), (725,140)
 Valid Result: TRUE
 
-Query: (166,63), (770,650)
-Results:
-(208,396)
-(246,67)
-(336,69)
-(423,583)
-(477,399)
-(504,91)
-(536,542)
-(571,411)
-(578,254)
-(710,619)
-(719,70)
-(741,299)
-Valid Result: TRUE
-
-Query: (510,340), (734,825)
-Results:
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-Valid Result: TRUE
-
-Query: (212,779), (305,419)
-Results:
-Valid Result: TRUE
-
-Query: (475,242), (599,154)
-Results:
-Valid Result: TRUE
-
-Query: (398,670), (818,157)
-Results:
-Valid Result: TRUE
-
-Query: (296,986), (342,894)
-Results:
-Valid Result: TRUE
-
-Query: (169,632), (466,349)
-Results:
-Valid Result: TRUE
-
-Query: (61,695), (675,46)
-Results:
-Valid Result: TRUE
-
-Query: (790,678), (821,22)
-Results:
-Valid Result: TRUE
-
-Query: (273,24), (709,588)
-Results:
-(336,69)
-(423,583)
-(477,399)
-(504,91)
-(536,542)
-(571,411)
-(578,254)
-(630,37)
-Valid Result: TRUE
-
-Query: (704,832), (722,181)
-Results:
-Valid Result: TRUE
-
-Query: (31,334), (249,656)
-Results:
-(37,551)
-(208,396)
-Valid Result: TRUE
-
-Query: (367,195), (636,580)
-Results:
-(477,399)
-(536,542)
-(571,411)
-(578,254)
-Valid Result: TRUE
-
-Query: (816,345), (830,670)
-Results:
-(823,623)
-Valid Result: TRUE
-
-Query: (573,959), (702,727)
-Results:
-Valid Result: TRUE
-
-Query: (556,660), (881,542)
-Results:
-Valid Result: TRUE
-
-Query: (3,969), (519,546)
-Results:
-Valid Result: TRUE
-
-Query: (516,372), (747,763)
-Results:
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-Valid Result: TRUE
-
-Query: (453,858), (842,729)
-Results:
-Valid Result: TRUE
-
-Query: (516,21), (541,197)
-Results:
-Valid Result: TRUE
-
-Query: (152,334), (819,735)
-Results:
-(208,396)
-(423,583)
-(425,697)
-(477,399)
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-Valid Result: TRUE
-
-Query: (640,693), (964,199)
-Results:
-Valid Result: TRUE
-
-Query: (331,47), (422,496)
-Results:
-(336,69)
-Valid Result: TRUE
-
-Query: (370,863), (627,761)
-Results:
-Valid Result: TRUE
-
-Query: (576,688), (974,302)
-Results:
-Valid Result: TRUE
-
-Query: (275,385), (347,663)
-Results:
-Valid Result: TRUE
-
-Query: (178,962), (545,616)
-Results:
-Valid Result: TRUE
-
-Query: (613,134), (935,736)
-Results:
-(702,689)
-(710,619)
-(741,299)
-(784,322)
-(823,623)
-(832,600)
-(874,380)
-Valid Result: TRUE
-
-Query: (215,738), (535,462)
-Results:
-Valid Result: TRUE
-
-Query: (18,117), (629,209)
-Results:
-Valid Result: TRUE
-
-Query: (27,976), (325,742)
-Results:
-Valid Result: TRUE
-
-Query: (540,304), (619,464)
-Results:
-(571,411)
-Valid Result: TRUE
-
-Query: (566,146), (743,658)
-Results:
-(578,254)
-(710,619)
-(741,299)
+Query: (740,548), (917,885)
 Valid Result: FALSE
-It should be:
-(571,411)
-(578,254)
-(710,619)
-(741,299)
 
-Query: (377,702), (577,969)
-Results:
-(483,929)
-(512,831)
-Valid Result: TRUE
-
-Query: (408,271), (801,536)
-Results:
-(477,399)
-(571,411)
-(741,299)
-(784,322)
-Valid Result: TRUE
-
-Query: (50,610), (511,67)
-Results:
-Valid Result: TRUE
-
-Query: (177,309), (229,585)
-Results:
-(208,396)
-Valid Result: TRUE
-
-Query: (522,810), (751,564)
-Results:
-Valid Result: TRUE
-
-Query: (59,387), (725,610)
-Results:
-(208,396)
-(423,583)
-(477,399)
-(536,542)
-(571,411)
-Valid Result: TRUE
-
-Query: (266,160), (529,705)
-Results:
-(423,583)
-(425,697)
-(477,399)
-Valid Result: TRUE
-
-Query: (205,839), (340,894)
-Results:
-Valid Result: TRUE
-
-Query: (486,140), (639,423)
-Results:
-(571,411)
-(578,254)
-Valid Result: TRUE
-
-Query: (398,170), (512,474)
-Results:
-(477,399)
-Valid Result: TRUE
-
-Query: (82,560), (950,277)
-Results:
-Valid Result: TRUE
-
-Query: (4,743), (589,144)
-Results:
-Valid Result: TRUE
-
-Query: (29,907), (148,424)
-Results:
-Valid Result: TRUE
-
-Query: (459,944), (500,853)
-Results:
-Valid Result: TRUE
-
-Query: (148,479), (525,909)
-Results:
-(423,583)
-(425,697)
-(512,831)
-Valid Result: TRUE
-
-Query: (186,129), (247,274)
-Results:
-Valid Result: TRUE
-
-Query: (229,851), (969,370)
-Results:
-Valid Result: TRUE
-
-Query: (240,834), (484,559)
-Results:
-Valid Result: TRUE
-
-Query: (63,505), (569,590)
-Results:
-(423,583)
-(536,542)
-Valid Result: TRUE
-
-Query: (581,225), (733,91)
-Results:
-Valid Result: TRUE
-
-Query: (474,417), (781,781)
-Results:
+Query: (312,205), (698,361)
 Valid Result: FALSE
-It should be:
-(536,542)
-(702,689)
-(710,619)
 
-Query: (312,334), (607,741)
-Results:
-(423,583)
-(425,697)
-(477,399)
-(536,542)
-(571,411)
-Valid Result: TRUE
-
-Query: (389,484), (676,797)
-Results:
-(423,583)
-(425,697)
-(536,542)
-Valid Result: TRUE
-
-Query: (471,325), (878,743)
-Results:
-(477,399)
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-(823,623)
-(832,600)
-(874,380)
-Valid Result: TRUE
-
-Query: (435,466), (930,987)
-Results:
-(483,929)
-(512,831)
-(536,542)
-(702,689)
-(710,619)
-(730,869)
-(741,815)
-(823,623)
-(832,600)
-Valid Result: TRUE
-
-Query: (488,696), (649,901)
-Results:
-(512,831)
-Valid Result: TRUE
-
-Query: (774,836), (854,294)
-Results:
-Valid Result: TRUE
-
-Query: (175,267), (606,898)
-Results:
-(208,396)
-(423,583)
-(425,697)
-(477,399)
-(512,831)
-(536,542)
-(571,411)
-Valid Result: TRUE
-
-Query: (266,755), (729,227)
-Results:
-Valid Result: TRUE
-
-Query: (119,270), (319,764)
-Results:
-(208,396)
-Valid Result: TRUE
-
-Query: (516,504), (551,224)
-Results:
-Valid Result: TRUE
-
-Query: (820,838), (977,763)
-Results:
-Valid Result: TRUE
-
-Query: (129,185), (586,281)
-Results:
-(578,254)
-Valid Result: TRUE
-
-Query: (236,748), (370,830)
-Results:
-Valid Result: TRUE
-
-Query: (191,890), (826,509)
-Results:
-Valid Result: TRUE
-
-Query: (204,332), (585,486)
-Results:
-(208,396)
-(477,399)
-(571,411)
-Valid Result: TRUE
-
-Query: (196,746), (962,722)
-Results:
-Valid Result: TRUE
-
-Query: (612,951), (737,88)
-Results:
-Valid Result: TRUE
-
-Query: (449,578), (599,109)
-Results:
-Valid Result: TRUE
-
-Query: (335,258), (914,711)
-Results:
-(423,583)
-(425,697)
-(477,399)
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-(741,299)
-(784,322)
-(823,623)
-(832,600)
-(874,380)
-Valid Result: TRUE
-
-Query: (0,921), (374,859)
-Results:
-Valid Result: TRUE
-
-Query: (77,701), (408,656)
-Results:
-Valid Result: TRUE
-
-Query: (642,339), (823,956)
-Results:
-(702,689)
-(710,619)
-(730,869)
-(741,815)
-(823,623)
-Valid Result: TRUE
-
-Query: (22,980), (468,453)
-Results:
-Valid Result: TRUE
-
-Query: (296,317), (798,986)
-Results:
-(423,583)
-(425,697)
-(477,399)
-(483,929)
-(512,831)
-(536,542)
-(571,411)
-(702,689)
-(710,619)
-(730,869)
-(741,815)
-(784,322)
-Valid Result: TRUE
-
-Query: (278,138), (783,99)
-Results:
-Valid Result: TRUE
-
-Query: (275,315), (923,438)
-Results:
-(477,399)
-(571,411)
-(784,322)
-(874,380)
-Valid Result: TRUE
-
-Query: (91,41), (215,180)
-Results:
-Valid Result: TRUE
-
-Query: (476,458), (515,627)
-Results:
-Valid Result: TRUE
-
-Query: (408,595), (914,837)
-Results:
-(425,697)
-(512,831)
-(702,689)
-(710,619)
-(741,815)
-(823,623)
-(832,600)
-Valid Result: TRUE
-
-Query: (574,798), (956,417)
-Results:
-Valid Result: TRUE
-
-Query: (195,261), (503,152)
-Results:
-Valid Result: TRUE
-
-Query: (446,341), (446,411)
-Results:
-Valid Result: TRUE
-
-Query: (205,382), (297,164)
-Results:
-Valid Result: TRUE
-
-Query: (331,570), (883,330)
-Results:
-Valid Result: TRUE
-
-Query: (52,596), (714,744)
-Results:
-(425,697)
-(702,689)
-(710,619)
-Valid Result: TRUE
-
-Query: (399,451), (552,624)
-Results:
-(536,542)
+Query: (599,439), (747,603)
 Valid Result: FALSE
-It should be:
-(423,583)
-(536,542)
 
-Query: (596,959), (740,116)
-Results:
+Query: (524,862), (723,764)
 Valid Result: TRUE
 
-Query: (185,756), (788,277)
-Results:
+Query: (125,585), (362,97)
 Valid Result: TRUE
 
-Query: (117,477), (546,616)
-Results:
-(423,583)
-(536,542)
+Query: (276,376), (333,297)
 Valid Result: TRUE
 
-Query: (303,98), (698,150)
-Results:
+Query: (624,299), (670,395)
+Valid Result: FALSE
+
+Query: (475,330), (887,744)
+Valid Result: FALSE
+
+Query: (878,628), (982,577)
 Valid Result: TRUE
 
-Query: (56,956), (581,330)
-Results:
+Query: (185,646), (290,784)
+Valid Result: FALSE
+
+Query: (85,37), (387,962)
+Valid Result: FALSE
+
+Query: (78,111), (252,966)
+Valid Result: FALSE
+
+Query: (48,555), (415,381)
 Valid Result: TRUE
 
-Query: (418,0), (504,433)
-Results:
-(477,399)
-(504,91)
+Query: (30,691), (283,953)
+Valid Result: FALSE
+
+Query: (701,654), (990,817)
+Valid Result: FALSE
+
+Query: (336,588), (562,566)
 Valid Result: TRUE
 
-Query: (439,891), (656,661)
-Results:
+Query: (495,896), (568,754)
 Valid Result: TRUE
 
-Query: (0,501), (141,186)
-Results:
+Query: (538,786), (542,980)
+Valid Result: FALSE
+
+Query: (294,278), (823,427)
+Valid Result: FALSE
+
+Query: (393,724), (741,789)
+Valid Result: FALSE
+
+Query: (522,809), (632,915)
+Valid Result: FALSE
+
+Query: (852,552), (869,195)
 Valid Result: TRUE
 
-Query: (685,345), (953,149)
-Results:
+Query: (12,922), (558,894)
 Valid Result: TRUE
+
+Query: (460,926), (510,79)
+Valid Result: TRUE
+
+Query: (185,956), (822,717)
+Valid Result: TRUE
+
+Query: (94,75), (697,917)
+Valid Result: FALSE
+
+Query: (353,343), (697,94)
+Valid Result: TRUE
+
+Query: (235,442), (419,51)
+Valid Result: TRUE
+
+Query: (603,757), (967,456)
+Valid Result: TRUE
+
+Query: (651,188), (661,219)
+Valid Result: FALSE
+
+Query: (110,15), (465,972)
+Valid Result: FALSE
+
+Query: (403,278), (942,116)
+Valid Result: TRUE
+
+Query: (586,588), (833,680)
+Valid Result: FALSE
+
+Query: (664,882), (949,369)
+Valid Result: TRUE
+
+Query: (225,998), (464,645)
+Valid Result: TRUE
+
+Query: (441,699), (696,44)
+Valid Result: TRUE
+
+Query: (809,15), (852,470)
+Valid Result: FALSE
+
+Query: (42,855), (555,17)
+Valid Result: TRUE
+
+Query: (871,859), (990,813)
+Valid Result: TRUE
+
+Query: (137,393), (929,75)
+Valid Result: TRUE
+
+Query: (107,763), (334,350)
+Valid Result: TRUE
+
+Query: (719,57), (997,223)
+Valid Result: FALSE
+
+Query: (55,535), (220,848)
+Valid Result: FALSE
+
+Query: (235,268), (893,396)
+Valid Result: FALSE
+
+Query: (636,745), (866,191)
+Valid Result: TRUE
+
+Query: (209,260), (601,824)
+Valid Result: FALSE
+
+Query: (120,551), (637,609)
+Valid Result: FALSE
+
+Query: (296,918), (685,630)
+Valid Result: TRUE
+
+Query: (33,792), (980,31)
+Valid Result: TRUE
+
+Query: (201,700), (606,609)
+Valid Result: TRUE
+
+Query: (235,826), (457,822)
+Valid Result: TRUE
+
+Query: (218,702), (446,82)
+Valid Result: TRUE
+
+Query: (626,437), (800,401)
+Valid Result: TRUE
+
+Query: (577,187), (697,817)
+Valid Result: FALSE
+
+Query: (738,214), (779,34)
+Valid Result: TRUE
+
+Query: (484,464), (665,518)
+Valid Result: FALSE
+
+Query: (608,997), (901,162)
+Valid Result: TRUE
+
+Query: (49,507), (771,637)
+Valid Result: FALSE
+
+Query: (459,580), (685,483)
+Valid Result: TRUE
+
+Query: (283,30), (566,83)
+Valid Result: FALSE
+
+Query: (819,544), (836,516)
+Valid Result: TRUE
+
+Query: (686,413), (731,469)
+Valid Result: FALSE
+
+Query: (503,465), (979,815)
+Valid Result: FALSE
+
+Query: (281,520), (685,241)
+Valid Result: TRUE
+
+Query: (403,586), (518,919)
+Valid Result: FALSE
+
+Query: (445,526), (556,130)
+Valid Result: TRUE
+
+Query: (459,368), (614,742)
+Valid Result: FALSE
+
+Query: (177,532), (398,217)
+Valid Result: TRUE
+
+Query: (76,365), (85,807)
+Valid Result: FALSE
+
+Query: (130,771), (628,461)
+Valid Result: TRUE
+
+Query: (236,483), (276,869)
+Valid Result: FALSE
+
+Query: (4,962), (111,874)
+Valid Result: TRUE
+
+Query: (548,866), (793,994)
+Valid Result: FALSE
+
+Query: (476,350), (745,204)
+Valid Result: TRUE
+
+Query: (298,442), (718,468)
+Valid Result: FALSE
+
+Query: (37,475), (974,402)
+Valid Result: TRUE
+
+Query: (192,122), (561,322)
+Valid Result: FALSE
+
+Query: (246,189), (783,834)
+Valid Result: FALSE
+
+Query: (25,411), (704,29)
+Valid Result: TRUE
+
+Query: (255,815), (373,274)
+Valid Result: TRUE
+
+Query: (33,48), (620,778)
+Valid Result: FALSE
+
+Query: (750,96), (982,820)
+Valid Result: FALSE
+
+Query: (288,280), (539,865)
+Valid Result: FALSE
+
+Query: (107,325), (268,651)
+Valid Result: FALSE
+
+Query: (800,181), (973,46)
+Valid Result: TRUE
+
+Query: (723,108), (880,748)
+Valid Result: FALSE
+
+Query: (777,584), (872,245)
+Valid Result: TRUE
+
+Query: (751,384), (871,785)
+Valid Result: FALSE
+
+Query: (432,491), (915,535)
+Valid Result: FALSE
+
+Query: (355,898), (588,479)
+Valid Result: TRUE
+
+Query: (344,996), (530,990)
+Valid Result: TRUE
+
+Query: (321,612), (641,473)
+Valid Result: TRUE
+
+Query: (146,967), (519,869)
+Valid Result: TRUE
+
+Query: (427,752), (617,299)
+Valid Result: TRUE
+
+Query: (688,746), (897,440)
+Valid Result: TRUE
+
+Query: (130,768), (577,914)
+Valid Result: FALSE
+
+Query: (260,492), (449,848)
+Valid Result: FALSE
+
+Query: (327,157), (742,273)
+Valid Result: FALSE
+
+Query: (153,23), (615,826)
+Valid Result: FALSE
 

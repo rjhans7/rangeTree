@@ -1,41 +1,30 @@
-Query: (184,226), (514,242)
-Results:
+Query: (182,884), (768,538)
 Valid Result: TRUE
 
-Query: (314,616), (460,43)
-Results:
+Query: (443,216), (691,492)
+Valid Result: FALSE
+
+Query: (153,783), (659,731)
 Valid Result: TRUE
 
-Query: (413,914), (591,718)
-Results:
+Query: (62,741), (490,600)
 Valid Result: TRUE
 
-Query: (587,931), (622,959)
-Results:
+Query: (113,798), (968,75)
 Valid Result: TRUE
 
-Query: (231,497), (713,228)
-Results:
+Query: (663,393), (774,385)
 Valid Result: TRUE
 
-Query: (104,620), (297,411)
-Results:
+Query: (115,85), (652,120)
+Valid Result: FALSE
+
+Query: (240,499), (861,8)
 Valid Result: TRUE
 
-Query: (645,321), (849,332)
-Results:
-(784,322)
-Valid Result: TRUE
+Query: (383,396), (899,826)
+Valid Result: FALSE
 
-Query: (588,906), (821,306)
-Results:
-Valid Result: TRUE
-
-Query: (790,704), (855,440)
-Results:
-Valid Result: TRUE
-
-Query: (705,708), (748,185)
-Results:
-Valid Result: TRUE
+Query: (671,942), (964,975)
+Valid Result: FALSE
 

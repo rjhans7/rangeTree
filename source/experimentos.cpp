@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "RangeTree.h"
 #include <fstream>
-#define SAMPLE_SIZE 30
+#define SAMPLE_SIZE 100000
 
 typedef pair<int, int> pii;
 
@@ -18,11 +18,6 @@ vector<pii> sample_points (size_t sample_size) {
     }
     
     sort(result.begin(), result.end(), comparex);
-    cout << "Points\n";
-    for (auto el:result) {
-        cout << "(" <<el.first << ", " << el.second << ")\n";
-    }
-    cout << endl;
     return result;    
 }
 
@@ -49,21 +44,22 @@ vector<pii> brute_force_query(vector<pii> &sample, pii beg, pii end){
     return result;
 }
 
-void validate (vector<pii> &sample, const vector<pii>& resultado, pii beg, pii end, ofstream &outfile) {
+void validate (vector<pii> &sample, const vector<pii>& resultado, pii beg, pii end, ofstream &outfile, bool verbose) {
     vector<pii> bf_result = brute_force_query(sample, beg, end);
     sort(bf_result.begin(), bf_result.end(), comparex);
     if (resultado == bf_result) outfile << "Valid Result: TRUE\n";
     else {
         outfile << "Valid Result: FALSE\n";
-        outfile << "It should be:\n";
-        for (auto it : bf_result) {
-            outfile << '(' << it.first << ',' << it.second << ')' << endl;
+        if (verbose) {
+            outfile << "It should be:\n";
+            for (auto it : bf_result) 
+                outfile << '(' << it.first << ',' << it.second << ')' << endl;
         }
-
+ 
     }
 }
 
-void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, ofstream &outfile) {
+void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, ofstream &outfile, bool verbose = false) {
     clock_t tStart, tEnd;
     double timeTaken = 0;
     for (auto query: queries) {
@@ -72,13 +68,16 @@ void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, of
         tEnd = clock();
         timeTaken += double(tEnd - tStart)/CLOCKS_PER_SEC;        
         outfile << "Query: (" << query.first.first << ',' << query.first.second << "), (" << query.second.first << ',' << query.second.second << ')'  << endl;
-        outfile << "Results:" << endl;
-        sort(resultado.begin(), resultado.end(), comparex);
-        for (auto it : resultado) {
-            outfile << '(' << it.first << ',' << it.second << ')' << endl;
+        if (verbose) {
+            outfile << "Results:" << endl;
+            sort(resultado.begin(), resultado.end(), comparex);
+            for (auto it : resultado) {
+                outfile << '(' << it.first << ',' << it.second << ')' << endl;
+            }
         }
+
         
-        validate(sample, resultado, query.first, query.second, outfile);  
+        validate(sample, resultado, query.first, query.second, outfile, verbose);  
         outfile << endl;
     }
     cout << "Query size: " << queries.size() << " Time Taken: " << timeTaken << endl;
@@ -87,7 +86,7 @@ void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, of
 
 void test_all (Nodo* &tree, vector<pii> &sample, const vector<int>& queries_sizes) {
     for (auto qs: queries_sizes) {
-        string name = "../../results/result_query_size_" + to_string(qs) + ".txt";
+        string name = "results/result_query_size_" + to_string(qs) + ".txt";
         ofstream outfile(name, ios::trunc);
         vector<pair<pii, pii>> queries = sample_queries(qs);
         test(tree, sample, queries, outfile);
@@ -101,8 +100,10 @@ int main() {
     
     //Filling the tree
     vector<pii> muestra = sample_points(SAMPLE_SIZE);
+    pii v[SAMPLE_SIZE];
+    for (int i = 0; i < SAMPLE_SIZE; i++) v[i] = muestra[i];
     tStart = clock();
-    Nodo* tree = create_range_tree(muestra, 0, SAMPLE_SIZE - 1);
+    Nodo* tree = create_range_tree(v, 0, SAMPLE_SIZE - 1);
     tEnd = clock();
     cout << "Build Range Tree of size: " << muestra.size() << " Time Taken: " << double(tEnd - tStart)/CLOCKS_PER_SEC << endl;
     
