@@ -86,7 +86,7 @@ void test (Nodo* &tree, vector<pii> &sample, vector<pair<pii, pii>> &queries, of
 
 void test_all (Nodo* &tree, vector<pii> &sample, const vector<int>& queries_sizes) {
     for (auto qs: queries_sizes) {
-        string name = "results/result_query_size_" + to_string(qs) + ".txt";
+        string name = "../results/result_query_size_" + to_string(qs) + ".txt";
         ofstream outfile(name, ios::trunc);
         vector<pair<pii, pii>> queries = sample_queries(qs);
         test(tree, sample, queries, outfile);
