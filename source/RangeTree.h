@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <set>
 
 using namespace std;
 
@@ -30,6 +31,9 @@ bool comparex(pair <int, int> a, pair <int, int> b) {
 
 bool comparey(pair <int, int> a, pair <int, int> b) {
     return (a.second < b.second);
+}
+bool compare(pair <int, int> a, pair <int, int> b) {
+    return ((a.second < b.second) && (a.first < b.first)) || (a.second < b.second);
 }
 
 Nodo* get_most_right(Nodo* parent) {
@@ -83,7 +87,7 @@ Nodo* create_y_range_tree(pair <int, int> v[], int l, int h, bool first_time = t
 	child_most_right->next = child_most_left;
 	child_most_left->prev = child_most_right;
     
-    Nodo* parent = new Nodo((child_left->value + child_right->value)/2, {0,0}, false);
+    Nodo* parent = new Nodo((child_most_right->value + child_most_left->value)/2, {0,0}, false);
     parent->m_pSon[0] = child_left;
     parent->m_pSon[2] = child_right;
     
@@ -95,7 +99,6 @@ Nodo* create_range_tree(pair <int, int> v[], int l, int h) {
         Nodo* padre_x = new Nodo(v[l].first , {0,0}, false);
         Nodo* child_x = new Nodo(v[l].first , {v[l].first,v[l].second});
         padre_x->m_pSon[0] = child_x;
-
         padre_x->m_pSon[1] = create_y_range_tree(v, l, h);
         return padre_x;
     }
@@ -109,6 +112,7 @@ Nodo* create_range_tree(pair <int, int> v[], int l, int h) {
         child_right_x->prev = child_left_x;
      
         //Linking ytree with xtree
+        sort(v+l, v+h+1, comparey);
         padre_x->m_pSon[1] = create_y_range_tree(v, l, h);
         return padre_x;
     }
@@ -126,7 +130,7 @@ Nodo* create_range_tree(pair <int, int> v[], int l, int h) {
 	child_most_left->prev = child_most_right;
 
 	   
-    Nodo* parent = new Nodo((child_left->value + child_right->value) / 2, {0, 0}, false);
+    Nodo* parent = new Nodo((child_most_right->value + child_most_left->value) / 2, {0, 0}, false);
     parent->m_pSon[0] = child_left;
     parent->m_pSon[2] = child_right;
     
@@ -188,7 +192,168 @@ vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int 
     }
     return vector <pair <int, int>>();
 }
+vector <pair <int, int>> search(Nodo* temp, int minV, int maxV) {
+    vector <pair <int, int>> result;
+    while (!temp->isLeaf) {
+        if (minV <= temp->value)
+            temp = temp->m_pSon[0];
+        else 
+            temp = temp->m_pSon[2];
+    }
+    while (temp->value <= maxV) {
+        if(temp->value >= minV) result.push_back(temp->point);
+        if (!temp->next) break;
+        temp = temp->next;
+    }
+    return result;
+}
+
+
+void printTree(Nodo *cur, int level) 
+{
+  if (cur) {
+    printTree(cur->m_pSon[0],level+1);
+    for (int k = 0; k < level; k++) cout << "\t";
+    if (cur->isLeaf) cout << cur->point.first << " " << cur->point.second <<endl;
+    else cout << cur->value << endl;
+
+    printTree(cur->m_pSon[2], level+1);
+
+  }
+}
+
+vector <pair <int, int>> search(Nodo* &root, int minX, int minY, int maxX, int maxY) {
+    auto temp = root;
+    vector <pair <int, int>> result;
+    while (!(minX < temp->value) || !(maxX > temp->value)) {
+        if (maxX < temp->value) {
+            temp = temp->m_pSon[0];
+        } else if(minX > temp->value) {
+            temp = temp->m_pSon[2];
+        }
+    }
+    auto r_x = search(temp, minX, maxX);
+    auto r_y = search(temp->m_pSon[1], minY, maxY);
+    sort(r_y.begin(), r_y.end(), comparex);
+    size_t i = 0;
+    size_t j = 0;
+    while (i < r_x.size() && j < r_y.size()) {
+        if (r_x[i].first == r_y[j].first && r_x[i].second == r_y[j].second){
+            result.push_back(r_x[i]);
+            i++;
+            j++;
+        } else if (r_x[i].first < r_y[j].first) i++;
+        else j++;
+    }
+
+    return result;    
+}
+bool inRange(pair<int, int> point, int beg_x, int end_x, int beg_y, int end_y) {
+    bool inX = (beg_x <= point.first) && (point.first <= end_x);
+    bool inY = (beg_y <= point.second) && (point.second <= end_y);
+    return inX && inY;
+}
+
+vector <pair <int, int>> range_search_1d (int beg, int end, Nodo* cur) {
+    vector <pair <int, int>> result;
+    
+    if (!cur) return result;
+
+    while (!cur->isLeaf) {
+        if (beg <= cur->value) cur = cur->m_pSon[0];
+        else {
+            if (cur->m_pSon[2]) cur = cur->m_pSon[2];
+            else cur = cur->m_pSon[0];
+        }
+    }
+
+    if (cur && cur->value < beg) cur = cur->next;
+    while (cur && cur->value <= end) {
+        if (beg <= cur->value && cur->value <= end)
+            result.push_back(cur->point);
+        cur = cur->next;
+    }
+    return result;
+}
+
+
+
+
+vector <pair <int, int>> range_search_2d (int beg_x, int end_x, int beg_y, int end_y, Nodo* cur) {
+
+    vector <pair <int, int>> result;
+    if (!cur) return result;
+
+    while (!cur->isLeaf) {
+        if (end_x < cur->value) cur = cur->m_pSon[0];
+        else if (cur->value < beg_x) {
+            if (cur->m_pSon[2]) cur = cur->m_pSon[2];
+            else cur = cur->m_pSon[0];
+        }
+        else break;
+    }
+
+    if (cur->isLeaf) {
+        if (inRange(cur->point, beg_x, end_x, beg_y, end_y))
+            result.push_back(cur->point);
+    } else {
+        Nodo* temp = cur;
+        cur = cur->m_pSon[0];
+        while (!cur->isLeaf) {
+            if (beg_x <= cur->value) {
+                vector<pair<int, int>> re;
+                Nodo * cur_y;
+                if (cur->m_pSon[2]) cur_y = cur->m_pSon[2];
+                else cur_y = cur->m_pSon[0];
+                if (cur_y->m_pSon[1])
+                    re = range_search_1d(beg_y, end_y, cur_y->m_pSon[1]);
+                else {
+                    if (inRange(cur_y->point, beg_x, end_x, beg_y, end_y))
+                        result.push_back(cur_y->point);
+                }
+
+                for (auto r: re) result.push_back(r);
+                cur = cur->m_pSon[0];
+            } else {
+                if (cur->m_pSon[2]) cur = cur->m_pSon[2];
+                else cur = cur->m_pSon[0];
+            }
+        }
+
+        if (inRange(cur->point, beg_x, end_x, beg_y, end_y))
+            result.push_back(cur->point);
+        
+        if (temp->m_pSon[2]) cur = temp->m_pSon[2];
+        else cur = temp->m_pSon[0];
+
+        while (!cur->isLeaf) {
+            if (cur->value <= end_x) {
+                vector<pair<int, int>> re;
+                if (cur->m_pSon[0]->m_pSon[1])
+                    re = range_search_1d(beg_y, end_y, cur->m_pSon[0]->m_pSon[1]);
+                else {
+                    if (inRange(cur->m_pSon[0]->point, beg_x, end_x, beg_y, end_y))
+                        result.push_back(cur->m_pSon[0]->point);
+                }
+
+                for (auto r: re) result.push_back(r);
+                
+                if (cur->m_pSon[2]) cur = cur->m_pSon[2];
+                else cur = cur->m_pSon[0];
+
+            } else cur = cur->m_pSon[0];
+        }
+
+        if (inRange(cur->point, beg_x, end_x, beg_y, end_y))
+            result.push_back(cur->point);
+    }
+    return result;
+}
+
+
+
 
 vector <pair <int, int>> search_by_range(Nodo* &root, pair<int, int> begin, pair<int, int> end) {
-    return search_by_range_x(root, begin.first, begin.second, end.first, end.second);
+    //return search_by_range_x(root, begin.first, begin.second, end.first, end.second);
+    return range_search_2d(begin.first, end.first, begin.second, end.second, root);
 }
