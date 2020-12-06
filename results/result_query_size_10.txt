@@ -28,3 +28,9 @@ Valid Result: TRUE
 Query: (461,1), (826,567)
 Valid Result: TRUE
 
+Query: (416,342), (581,127)
+Valid Result: TRUE
+
+Query: (25,853), (166,345)
+Valid Result: TRUE
+

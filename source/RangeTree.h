@@ -192,22 +192,6 @@ vector <pair <int, int>> search_by_range_x(Nodo* &root, int minX, int minY, int 
     }
     return vector <pair <int, int>>();
 }
-vector <pair <int, int>> search(Nodo* temp, int minV, int maxV) {
-    vector <pair <int, int>> result;
-    while (!temp->isLeaf) {
-        if (minV <= temp->value)
-            temp = temp->m_pSon[0];
-        else 
-            temp = temp->m_pSon[2];
-    }
-    while (temp->value <= maxV) {
-        if(temp->value >= minV) result.push_back(temp->point);
-        if (!temp->next) break;
-        temp = temp->next;
-    }
-    return result;
-}
-
 
 void printTree(Nodo *cur, int level) 
 {
@@ -222,32 +206,6 @@ void printTree(Nodo *cur, int level)
   }
 }
 
-vector <pair <int, int>> search(Nodo* &root, int minX, int minY, int maxX, int maxY) {
-    auto temp = root;
-    vector <pair <int, int>> result;
-    while (!(minX < temp->value) || !(maxX > temp->value)) {
-        if (maxX < temp->value) {
-            temp = temp->m_pSon[0];
-        } else if(minX > temp->value) {
-            temp = temp->m_pSon[2];
-        }
-    }
-    auto r_x = search(temp, minX, maxX);
-    auto r_y = search(temp->m_pSon[1], minY, maxY);
-    sort(r_y.begin(), r_y.end(), comparex);
-    size_t i = 0;
-    size_t j = 0;
-    while (i < r_x.size() && j < r_y.size()) {
-        if (r_x[i].first == r_y[j].first && r_x[i].second == r_y[j].second){
-            result.push_back(r_x[i]);
-            i++;
-            j++;
-        } else if (r_x[i].first < r_y[j].first) i++;
-        else j++;
-    }
-
-    return result;    
-}
 bool inRange(pair<int, int> point, int beg_x, int end_x, int beg_y, int end_y) {
     bool inX = (beg_x <= point.first) && (point.first <= end_x);
     bool inY = (beg_y <= point.second) && (point.second <= end_y);
