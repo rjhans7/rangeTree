@@ -6,13 +6,13 @@
 
 ## Ejecución
 
-Para probar los experimentos que se encuentran en el archivo [experimentos.cpp](experimentos.cpp), se debe ejecutar el siguiente comando.
+Para probar los experimentos que se encuentran en el archivo [experimentos.cpp](source/experimentos.cpp), se debe ejecutar el siguiente comando.
 
 ```
 ❯ g++ -std=c++17 -Wall source/experimentos.cpp
 ❯ ./a.out
 ```
-Por defecte los resultados se muestran de manera no verbosa, si desea ver cada uno de los resultados realice el siguiente cambio `bool verbose_result = true;` en [experimentos.cpp](experimentos.cpp).
+Por defecte los resultados se muestran de manera no verbosa, si desea ver cada uno de los resultados realice el siguiente cambio `bool verbose_result = true;` en [experimentos.cpp](source/experimentos.cpp).
 Los resultados de las consultas realizadas durante la experimentación con 100k puntos insertados de manera aleatoria se encuentran en la carpeta [results](/results).
 
 **Tiempo de ejecución de consultas:**
@@ -27,5 +27,5 @@ Query size: 10000 Time Taken: 17.06897
 
 ## Ejemplo de query
 
-Un ejemplo de como se usan las queries se encuentra dentro del archivo [main.cpp](main.cpp)
+Un ejemplo de como se usan las queries se encuentra dentro del archivo [main.cpp](source/main.cpp)
 ![](query.PNG)
